@@ -48,6 +48,7 @@ const StyledInput = styled.input`
 const StyledBigInput = styled(StyledInput)`
   font-size: 1.125rem;
   padding-left: 25px;
+  border-bottom-width: 2px;
 
   &::placeholder {
     font-size: 1.125rem;

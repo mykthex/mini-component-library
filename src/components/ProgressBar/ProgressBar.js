@@ -12,12 +12,7 @@ const ProgressBarStatus = styled.span`
   height: 100%;
   width: ${props => props.value || 100}%;
   background: ${COLORS.primary};
-
-  ${props => `
-    ${props.value === 100 ? 'border-radius: 4px;' : 'border-radius: 4px 0px 0px 4px;'}; 
-  `}
 `;
-
 
 const ProgressBarWrapper = styled.div`
   background: rgba(128, 128, 128, 0.15);
@@ -26,6 +21,7 @@ const ProgressBarWrapper = styled.div`
   position: relative;
   height: 12px;
   width: 370px;
+  overflow: hidden;
 `;
 
 const SmallProgressBarWrapper = styled(ProgressBarWrapper)`
@@ -58,7 +54,13 @@ const ProgressBar = ({ value, size }) => {
   }
 
   return (
-    <ProgressBarToRender value={value}>
+    <ProgressBarToRender
+      value={value}
+      role="progressbar"
+      aria-valuenow={value}
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
       <ProgressBarStatus value={value} />
       <VisuallyHidden>
         Progression: ${value}%;
